@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+<title>SIP calculator</title>
+<link href="converter.css" rel="stylesheet">
+<style>
+
+</style>
+
+<body>
+    <div id="total">
+        <br>
+        <h1>SIP calculator</h1><br>
+
+        <div class="div-ran">
+            <div>
+                <p>Monthly Investment: <input type="number" id="inve-prev" name="inp-amount" min="1000" max="10000000" maxlength="9" value="100000" size="9" step="500"> rs</p>
+                <input type="range" class="slider" id="inve-rang" step="500" min="1000" max="10000000" value="100000">
+            </div>
+            <div>
+                <p>Expected annual return rate: <input type="number" id="rate-prev" name="inp-amount" min="1" max="50" maxlength="2" size="2" value="10" step="0.05"> %</p>
+                <input type="range" class="slider" id="rate-rang" min="1" max="50" value="10" step="0.05">
+            </div>
+            <div>
+                <p>Time Period: <input type="number" id="time-prev" name="inp-amount" min="1" max="30" value="5" step="0.25" maxlength="2" size="2"> years</p>
+                <input type="range" class="slider" id="time-rang" min="1" max="30" value="5" step="0.25">
+            </div>
+        </div>
+
+
+        <!--output text division-->
+        <div id="outp">
+            <div>
+                <h3>Invested amount : <span id="out-inv"></span></h3>
+                <h3>estimated returns : <span id="out-ret"></span></h3>
+                <h3>Total Value : <span id="out-tot"></span></h3>
+            </div>
+        </div>
+
+        <br>
+
+        <p style="text-align:center;"> Scripted by <a href="https://github.com/rpranaykumarreddy" target="_blank">R Pranay Kumar Reddy</a></p>
+
+
+    </div>
+    <script>
+        /*range value optimization*/
+        var inra = document.getElementById("inve-rang");
+        var inpr = document.getElementById("inve-prev");
+        var rara = document.getElementById("rate-rang");
+        var rapr = document.getElementById("rate-prev");
+        var tira = document.getElementById("time-rang");
+        var tipr = document.getElementById("time-prev");
+
+
+        inra.oninput = function() {
+            inpr.value = this.value;
+            cal();
+        }
+        rara.oninput = function() {
+            rapr.value = this.value;
+            cal();
+        }
+        tira.oninput = function() {
+            tipr.value = this.value;
+            cal();
+        }
+        inpr.oninput = function() {
+            inra.value = this.value;
+            cal();
+        }
+        rapr.oninput = function() {
+            rara.value = this.value;
+            cal();
+        }
+        tipr.oninput = function() {
+            tira.value = this.value;
+            cal();
+        }
+
+        /*intialing var for cal() Function*/
+
+        var outInv = document.getElementById("out-inv");
+        var outRet = document.getElementById("out-ret");
+        var outTot = document.getElementById("out-tot");
+
+        var invval = document.getElementById("inve-rang").value;
+        var ratval = document.getElementById("rate-rang").value;
+        var timval = document.getElementById("time-rang").value;
+        var fv, p, t, r, n, i;
+        /*intial cal()*/
+        var intial;
+        intial = cal();
+
+        /*SIP cal() Function*/
+        function cal() {
+            invval = document.getElementById("inve-rang").value;
+            ratval = document.getElementById("rate-rang").value;
+            timval = document.getElementById("time-rang").value;
+            p = invval;
+            r = ratval / 100;
+            i = r / 12;
+            t = timval;
+            n = t * 12;
+            fv = Math.round(p * ((Math.pow((1 + i), n) - 1) / i) * (1 + i));
+            outInv.innerHTML = indianrs(p * n);
+            outRet.innerHTML = indianrs(fv - (p * n));
+            outTot.innerHTML = indianrs(fv);
+        }
+
+        /*convert to indian rupees*/
+        function indianrs(x) {
+            /*
+                        x = x.toString();
+                        var lastThree = x.substring(x.length - 3);
+                        var otherNumbers = x.substring(0, x.length - 3);
+                        if (otherNumbers != '')
+                            lastThree = ',' + lastThree;
+                        var res = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
+                        return res;*/
+            var res;
+            var myObj = {
+                currencyDisplay: "symbol",
+                style: "currency",
+                currency: "INR",
+                localeMatcher: "lookup",
+                useGrouping: "false"
+            }
+            res = x.toLocaleString("en-IN", myObj);
+            return res;
+        }
+    </script>
+
+</body>
+
+</html>
