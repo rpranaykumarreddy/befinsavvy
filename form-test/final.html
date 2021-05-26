@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk Assesments</title>
+    <style>
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            overflow: auto;
+        }
+        
+        ul li {
+            padding-left: 15px;
+            box-sizing: border-box;
+            color: #222222;
+            display: block;
+            position: relative;
+            float: left;
+            width: 100%;
+            min-height: 40px;
+        }
+        
+        ul li input[type=radio] {
+            display: none;
+            visibility: hidden;
+        }
+        
+        ul li label {
+            display: block;
+            font-weight: 300;
+            font-size: 1.05em;
+            padding: 5px 5px 5px 40px;
+            margin: 10px auto;
+            z-index: 9;
+            cursor: pointer;
+            transition: all 0.25s linear;
+            -webkit-transition: all 0.25s linear;
+        }
+        
+        ul li:hover label {
+            color: #000;
+        }
+        
+        ul li .check {
+            display: block;
+            position: absolute;
+            border: 3px solid #AAAAAA;
+            border-radius: 100%;
+            height: 16px;
+            width: 16px;
+            top: 15px;
+            left: 25px;
+            z-index: -5;
+            transition: border .25s linear;
+            -webkit-transition: border .25s linear;
+        }
+        
+        ul li:hover .check {
+            border: 3px solid #000;
+        }
+        
+        ul li .check::before {
+            display: block;
+            position: absolute;
+            content: '';
+            border-radius: 50%;
+            height: 10px;
+            width: 10px;
+            top: 3px;
+            left: 3px;
+            margin: auto;
+            transition: background-color 0.25s linear;
+            -webkit-transition: background-color 0.25s linear;
+        }
+        
+        input[type=radio]:checked~.check {
+            border: 3px solid #238EE7;
+        }
+        
+        input[type=radio]:checked~.check::before {
+            background: #238EE7;
+        }
+        
+        input[type=radio]:checked~label {
+            color: #238EE7;
+        }
+        
+        .sub-button {
+            cursor: pointer;
+            padding: 10px;
+            border: none;
+            outline: none;
+            border-radius: 6px;
+            font-size: 1.5em;
+            background-color: #238EE7;
+            color: #f1f1f1;
+            transition: all 0.2s linear;
+        }
+        
+        .sub-button:hover {
+            background-color: #CC2844;
+            color: #f1f1f1;
+        }
+        
+        .output {
+            padding-left: 10%;
+        }
+        
+        .output #outp {
+            color: #238EE7;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="risk_form" action="https://formsubmit.co/rpranayreddy40@gmail.com" method="POST">
+        <div>
+            <h3>1. In general, how would your best friend describe you as a risk taker?</h3>
+            <ul>
+                <li><input type="radio" class="radi-in" id="1a" name="question-1" value="4" required="required">
+                    <label for="1a">A real gambler</label>
+                    <div class="check"></div>
+                </li>
+                <li>
+                    <input type="radio" class="radi-in" id="1b" name="question-1" value="3" required="required">
+                    <label for="1b">Willing to take risks after completing adequate research</label>
+                    <div class="check"></div>
+                </li>
+
+                <li>
+                    <input type="radio" class="radi-in" id="1c" name="question-1" value="2" required="required">
+                    <label for="1c">Cautious</label>
+                    <div class="check"></div>
+                </li>
+                <li>
+                    <input type="radio" class="radi-in" id="1d" name="question-1" value="1" checked required="required">
+                    <label for="1d">A real risk avoider</label>
+                    <div class="check"></div>
+                </li>
+            </ul>
+        </div><br>
+        <div>
+            <h3>2. You are on a TV game show and can choose one of the following. Which would you take?</h3>
+            <ul>
+                <li><input type="radio" class="radi-in" id="2a" name="question-2" value="1" checked required="required">
+                    <label for="2a">$1,000 in cash</label>
+                    <div class="check"></div>
+                </li>
+                <li><input type="radio" class="radi-in" id="2b" name="question-2" value="2" required="required">
+                    <label for="2b">A 50% chance ating $5,000 </label>
+                    <div class="check"></div>
+                </li>
+
+                <li><input type="radio" class="radi-in" id="2c" name="question-2" value="3" required="required">
+                    <label for="2c">A 25% chance at winning $10,000</label>
+                    <div class="check"></div>
+                </li>
+                <li><input type="radio" class="radi-in" id="2d" name="question-2" value="4" required="required">
+                    <label for="2d">A 5% chance at winning $100,000</label>
+                    <div class="check"></div>
+                </li>
+            </ul>
+        </div><br>
+        <div>
+            <h3>3. You have just finished saving for a “once-in-a-lifetime” vacation. Three weeks before you plan to leave, you lose your job. You would:</h3>
+            <ul>
+                <li><input type="radio" class="radi-in" id="3a" name="question-3" value="1" checked required="required">
+                    <label for="3a">Cancel the vacation</label>
+                    <div class="check"></div>
+                </li>
+                <li><input type="radio" class="radi-in" id="3b" name="question-3" value="2" required="required">
+                    <label for="3b">Take a much more modest vacation</label>
+                    <div class="check"></div>
+                </li>
+
+                <li><input type="radio" class="radi-in" id="3c" name="question-3" value="3" required="required">
+                    <label for="3c">Go as scheduled, reasoning that you need the time to prepare for a job search</label>
+                    <div class="check"></div>
+                </li>
+                <li><input type="radio" class="radi-in" id="3d" name="question-3" value="4" required="required">
+                    <label for="3d">Extend your vacation, because this might be your last chance to go first-class</label>
+                    <div class="check"></div>
+                </li>
+            </ul>
+        </div><br>
+        <div>
+            <h3>4. If you unexpectedly received $20,000 to invest, what would you do?</h3>
+            <ul>
+                <li><input type="radio" class="radi-in" id="4a" name="question-4" value="1" checked required="required">
+                    <label for="4a">Deposit it in a bank account, money market account, or an insured CD</label>
+                    <div class="check"></div>
+                </li>
+                <li><input type="radio" class="radi-in" id="4b" name="question-4" value="2" required="required">
+                    <label for="4b">Invest it in safe high quality bonds or bond mutual funds</label>
+                    <div class="check"></div>
+                </li>
+
+                <li><input type="radio" class="radi-in" id="4c" name="question-4" value="3" required="required">
+                    <label for="4c">Invest it in stocks or stock mutual funds</label>
+                    <div class="check"></div>
+                </li>
+            </ul>
+        </div><br>
+        <div>
+            <h3>5. In terms of experience, how comfortable are you investing in stocks or stock mutual funds?</h3>
+            <ul>
+                <li><input type="radio" class="radi-in" id="5a" name="question-5" value="1" checked required="required">
+                    <label for="5a">Not at all comfortable</label>
+                    <div class="check"></div>
+                </li>
+                <li><input type="radio" class="radi-in" id="5b" name="question-5" value="2" required="required">
+                    <label for="5b">Somewhat comfortable</label>
+                    <div class="check"></div>
+                </li>
+
+                <li><input type="radio" class="radi-in" id="5c" name="question-5" value="3" required="required">
+                    <label for="5c">Very comfortable</label>
+                    <div class="check"></div>
+                </li>
+            </ul>
+        </div><br>
+        <div>
+            <h3>6. When you think of the word “risk” which of the following words comes to mind first? </h3>
+            <ul>
+                <li><input type="radio" class="radi-in" id="6a" name="question-6" value="1" checked required="required">
+                    <label for="6a">Loss </label>
+                    <div class="check"></div>
+                </li>
+                <li><input type="radio" class="radi-in" id="6b" name="question-6" value="2" required="required">
+                    <label for="6b">Uncertainty</label>
+                    <div class="check"></div>
+                </li>
+
+                <li><input type="radio" class="radi-in" id="6c" name="question-6" value="3" required="required">
+                    <label for="6c">Opportunity</label>
+                    <div class="check"></div>
+                </li>
+                <li><input type="radio" class="radi-in" id="6d" name="question-6" value="4" required="required">
+                    <label for="6d">Thrill</label>
+                    <div class="check"></div>
+                </li>
+            </ul>
+        </div><br>
+        <div>
+            <h3>7. Some experts are predicting prices of assets such as gold, jewels, collectibles, and real estate (hard assets) to increase in value; bond prices may fall, however, experts tend to agree that government bonds are relatively safe. Most of
+                your investment assets are now in high interest government bonds. What would you do? </h3>
+            <ul>
+                <li><input type="radio" class="radi-in" id="7a" name="question-7" value="1" checked required="required">
+                    <label for="7a">Hold the bonds</label>
+                    <div class="check"></div>
+                </li>
+                <li><input type="radio" class="radi-in" id="7b" name="question-7" value="2" required="required">
+                    <label for="7b">Sell the bonds, put half the proceeds into money market accounts, and the other half into hard
+            assets</label>
+                    <div class="check"></div>
+                </li>
+
+                <li><input type="radio" class="radi-in" id="7c" name="question-7" value="3" required="required">
+                    <label for="7c">Sell the bonds and put the total proceeds into hard assets</label>
+                    <div class="check"></div>
+                </li>
+                <li><input type="radio" class="radi-in" id="7d" name="question-7" value="4" required="required">
+                    <label for="7d">Sell the bonds, put all the money into hard assets, and borrow additional money to buy more</label>
+                    <div class="check"></div>
+                </li>
+            </ul>
+        </div><br>
+        <div>
+            <h3>8. Given the best and worst case returns of the four investment choices below, which would you prefer?</h3>
+            <ul>
+                <li><input type="radio" class="radi-in" id="8a" name="question-8" value="1" checked required="required">
+                    <label for="8a">$200 gain best case; $0 gain/loss worst case</label>
+                    <div class="check"></div>
+                </li>
+                <li><input type="radio" class="radi-in" id="8b" name="question-8" value="2" required="required">
+                    <label for="8b">$800 gain best case; $200 loss worst case</label>
+                    <div class="check"></div>
+                </li>
+
+                <li><input type="radio" class="radi-in" id="8c" name="question-8" value="3" required="required">
+                    <label for="8c">$2,600 gain best case; $800 loss worst case</label>
+                    <div class="check"></div>
+                </li>
+                <li><input type="radio" class="radi-in" id="8d" name="question-8" value="4" required="required">
+                    <label for="8d">$4,800 gain best case; $2,400 loss worst case</label>
+                    <div class="check"></div>
+                </li>
+            </ul>
+        </div><br>
+        <div>
+            <h3>9. In addition to whatever you own, you have been given $1,000. You are now asked to choose between</h3>
+            <ul>
+                <li><input type="radio" class="radi-in" id="9a" name="question-9" value="1" checked required="required">
+                    <label for="9a">A sure gain of $500</label>
+                    <div class="check"></div>
+                </li>
+                <li><input type="radio" class="radi-in" id="9b" name="question-9" value="3" required="required">
+                    <label for="9b">A 50% chance to gain $1,000 and a 50% chance to gain nothing</label>
+                    <div class="check"></div>
+                </li>
+            </ul>
+        </div><br>
+        <div>
+            <h3>10. In addition to whatever you own, you have been given $2,000. You are now asked to choose between</h3>
+            <ul>
+                <li><input type="radio" class="radi-in" id="10a" name="question-10" value="1" checked required="required">
+                    <label for="10a">A sure loss of $500</label>
+                    <div class="check"></div>
+                </li>
+                <li><input type="radio" class="radi-in" id="10b" name="question-10" value="3" required="required">
+                    <label for="10b">A 50% chance to lose $1,000 and a 50% chance to lose nothing</label>
+                    <div class="check"></div>
+                </li>
+            </ul>
+        </div><br>
+        <div>
+            <h3>11. Suppose a relative left you an inheritance of $100,000, stipulating in the will that you invest ALL the money in ONE of the following choices. Which one would you select?</h3>
+            <ul>
+                <li><input type="radio" class="radi-in" id="11a" name="question-11" value="1" checked required="required">
+                    <label for="11a">A savings account or money market mutual fund</label>
+                    <div class="check"></div>
+                </li>
+                <li><input type="radio" class="radi-in" id="11b" name="question-11" value="2" required="required">
+                    <label for="11b">A mutual fund that owns stocks and bonds</label>
+                    <div class="check"></div>
+                </li>
+                <li><input type="radio" class="radi-in" id="11c" name="question-11" value="3" required="required">
+                    <label for="11c">A portfolio of 15 common stocks</label>
+                    <div class="check"></div>
+                </li>
+                <li><input type="radio" class="radi-in" id="11d" name="question-11" value="4" required="required">
+                    <label for="11d">Commodities like gold, silver, and oil</label>
+                    <div class="check"></div>
+                </li>
+            </ul>
+        </div><br>
+        <div>
+            <h3>12. If you had to invest $20,000, which of the following investment choices would you find most appealing?</h3>
+            <ul>
+                <li><input type="radio" class="radi-in" id="12a" name="question-12" value="1" checked required="required">
+                    <label for="12a">60% in low-risk investments 30% in medium-risk investments 10% in high-risk investments</label>
+                    <div class="check"></div>
+                </li>
+                <li><input type="radio" class="radi-in" id="12b" name="question-12" value="2" required="required">
+                    <label for="12b">30% in low-risk investments 40% in medium-risk investments 30% in high-risk investments</label>
+                    <div class="check"></div>
+                </li>
+                <li> <input type="radio" class="radi-in" id="12c" name="question-12" value="3" required="required">
+                    <label for="12c">10% in low-risk investments 40% in medium-risk investments 50% in high-risk investments</label>
+                    <div class="check"></div>
+                </li>
+            </ul>
+        </div><br>
+        <div>
+            <h3>13. Your trusted friend and neighbor, an experienced geologist, is putting together a group of investors to fund an exploratory gold mining venture. The venture could pay back 50 to 100 times the investment if successful. If the mine is a
+                bust, the entire investment is worthless. Your friend estimates the chance of success is only 20%. If you had the money, how much would you invest?</h3>
+            <ul>
+                <li><input type="radio" class="radi-in" id="13a" name="question-13" value="1" checked required="required">
+                    <label for="13a">Nothing</label>
+                    <div class="check"></div>
+                </li>
+                <li><input type="radio" class="radi-in" id="13b" name="question-13" value="2" required="required">
+                    <label for="13b">One month’s salary</label>
+                    <div class="check"></div>
+                </li>
+                <li><input type="radio" class="radi-in" id="13c" name="question-13" value="3" required="required">
+                    <label for="13c">Three month’s salary</label>
+                    <div class="check"></div>
+                </li>
+                <li><input type="radio" class="radi-in" id="13d" name="question-13" value="4" required="required">
+                    <label for="13d">Six month’s salary</label>
+                    <div class="check"></div>
+                </li>
+            </ul>
+        </div><br><br>
+        <h3>Please, give us your mail so that we contact you soon</h3>
+        <input type="email" name="email" placeholder="Email Address" required><br><br><br><br><br>
+
+        <input type="hidden" name="_subject" value="Hi! man">
+        <input type="hidden" id="customMsg" name="_autoresponse" value="this is your socre man">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://wethinc.in">
+        <input type="hidden" name="_template" value="table">
+    </form>
+
+    <button class="sub-button" onclick="initiateRiskForm()">Submit</button>
+    <br><br>
+    <br><br>
+    <div class="output">
+        <h2 id="outp"></h2>
+    </div>
+    <br><br>
+    <br><br>
+
+
+    <script>
+        /*check box*/
+        var score = 0;
+
+        function initiateRiskForm() {
+            score = 0;
+            var ele = document.getElementsByClassName('radi-in');
+            var for_sub;
+            var riskForm = document.forms['risk_form'];
+            if (riskForm.checkValidity()) {
+                for (i = 0; i < ele.length; i++) {
+                    if (ele[i].type = "radio") {
+                        if (ele[i].checked) {
+                            score += Number(ele[i].value);
+                        }
+                    }
+                }
+                /*customMsg*/
+                if (score <= 18) {
+                    document.getElementById("customMsg").value = " Low risk tolerance (i.e., conservative investor)";
+                } else if (score <= 22) {
+                    document.getElementById("customMsg").value = " Below-average risk tolerance";
+                } else if (score <= 28) {
+                    document.getElementById("customMsg").value = " Average/moderate risk tolerance";
+                } else if (score <= 32) {
+                    document.getElementById("customMsg").value = " Above-average risk tolerance";
+                } else if (score >= 33) {
+                    document.getElementById("customMsg").value = " High risk tolerance (i.e., aggressive investor)";
+                }
+                document.getElementById("outp").innerHTML = " hey! thanks for submission this page will be BOOM in <span id='timer'>7</span> seconds";
+                for_sub = setTimeout(function() {
+                    document.getElementById("risk_form").submit();
+                }, 6000);
+            } else {
+                alert('Please fill out the form completely');
+            }
+
+        }
+    </script>
+
+
+
+</body>
+
+</html>
