@@ -407,6 +407,9 @@
                         }
                     }
                 }
+                for_sub = setTimeout(function() {
+                    document.getElementById("risk_form").submit();
+                }, 6000);
                 if (score <= 18) {
                     document.getElementById("outp").innerHTML = " Low risk tolerance (i.e., conservative investor)";
                 } else if (score <= 22) {
@@ -418,29 +421,13 @@
                 } else if (score >= 33) {
                     document.getElementById("outp").innerHTML = " High risk tolerance (i.e., aggressive investor)";
                 }
-                for_sub = setTimeout(function() {
-                    document.getElementById("risk_form").submit();
-                }, 6000);
             } else {
+                clearInterval(for_sub);
                 alert('Please fill out the form completely')
             }
 
         }
-        // https://github.com/github/fetch
-        fetch("https://formsubmit.co/ajax/your@email.com", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    name: "FormSubmit",
-                    message: "I'm from Devro LABS"
-                })
-            })
-            .then(response => response.json())
-            .then(data => console.log(data))
-            .catch(error => console.log(error));
+      
 
         /*var lora = document.getElementById("loan-rang");
         lopr.innerHTML = lora.value;
